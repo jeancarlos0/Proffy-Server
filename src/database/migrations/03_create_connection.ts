@@ -13,7 +13,7 @@ export async function up(knex: Knex){
             .onUpdate('CASCADE')
             .onDelete('CASCADE');
         //Now() retorna o horario atual que será o valor ddefault
-        table.timestamp('created_at').defaultTo('now()').notNullable();
+        table.timestamp('created_at').defaultTo(knex.raw('CURRENT_TIMESTAMP')).notNullable();
     })
 }
 
